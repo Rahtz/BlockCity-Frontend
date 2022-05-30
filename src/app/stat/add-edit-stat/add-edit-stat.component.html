@@ -1,0 +1,70 @@
+<form>
+  <div class="mb-3">
+    <label for="TeamId" class="form-label">Team</label>
+    <input type="text" class="form-control" name="TeamId" [(ngModel)]="teamId" *ngIf="stat.id!=0" disabled>
+    <select class="form-control" name="TeamId" id="TeamId" [(ngModel)]="teamId" *ngIf="stat.id==0">
+      <option *ngFor="let type of teamList$|async|orderBy: 'teamName': 'asc'" [value]="type.id">{{type.teamName}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="playerId" class="form-label">Player</label>
+    <input type="text" class="form-control" name="PlayerId" [(ngModel)]="playerId" *ngIf="stat.id!=0" disabled>
+    <select class="form-control" name="PlayerId" id="PlayerId" [(ngModel)]="playerId" *ngIf="stat.id==0">
+      <option *ngFor="let type of playerList$|async| orderBy: 'playerName': 'asc'" [value]="type.id">{{type.playerName}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="yourDate" class="form-label">Date</label>
+    <input type="datetime-local" class="form-control" [(ngModel)]="yourDate" name="yourDate">
+  </div>
+  <div class="mb-3">
+    <label for="points" class="form-label">Points</label>
+    <input type="text" class="form-control" [(ngModel)]="points" name="points">
+  </div>
+  <div class="mb-3">
+    <label for="rebounds" class="form-label">Rebounds</label>
+    <input type="text" class="form-control" [(ngModel)]="rebounds" name="rebounds">
+  </div>
+  <div class="mb-3">
+    <label for="assists" class="form-label">Assists</label>
+    <input type="text" class="form-control" [(ngModel)]="assists" name="assists">
+  </div>
+  <div class="mb-3">
+    <label for="steals" class="form-label">Steals</label>
+    <input type="text" class="form-control" [(ngModel)]="steals" name="steals">
+  </div>
+  <div class="mb-3">
+    <label for="blocks" class="form-label">Blocks</label>
+    <input type="text" class="form-control" [(ngModel)]="blocks" name="blocks">
+  </div>
+  <div class="mb-3">
+    <label for="FeildGoalsAttempted" class="form-label">FeildGoalsAttempted</label>
+    <input type="text" class="form-control" [(ngModel)]="FeildGoalsAttempted" name="FeildGoalsAttempted">
+  </div>
+  <div class="mb-3">
+    <label for="FeildGoalsMade" class="form-label">FeildGoalsMade</label>
+    <input type="text" class="form-control" [(ngModel)]="FeildGoalsMade" name="FeildGoalsMade">
+  </div>
+  <div class="mb-3">
+    <label for="ThreePointersAttempted" class="form-label">ThreePointersAttempted</label>
+    <input type="text" class="form-control" [(ngModel)]="ThreePointersAttempted" name="ThreePointersAttempted">
+  </div>
+  <div class="mb-3">
+    <label for="ThreePointerMade" class="form-label">ThreePointerMade</label>
+    <input type="text" class="form-control" [(ngModel)]="ThreePointerMade" name="ThreePointerMade">
+  </div>
+  <div class="mb-3">
+    <label for="FreeThrowsAttempted" class="form-label">FreeThrowsAttempted</label>
+    <input type="text" class="form-control" [(ngModel)]="FreeThrowsAttempted" name="FreeThrowsAttempted">
+  </div>
+  <div class="mb-3">
+    <label for="FreeThrowsMade" class="form-label">FreeThrowsMade</label>
+    <input type="text" class="form-control" [(ngModel)]="FreeThrowsMade" name="FreeThrowsMade">
+  </div>
+  <button (click)="addStat(); reloadCurrentPage()" *ngIf="stat.id==0" class="btn btn-primary">
+    Add
+  </button>
+  <button (click)="updateStat(); reloadCurrentPage()" *ngIf="stat.id!=0" class="btn btn-primary">
+    Update
+  </button>
+</form>

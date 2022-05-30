@@ -1,0 +1,113 @@
+<!-- <h1>
+  <p *ngFor="let player of playerData">
+    {{player.points}}
+    {{player.rebounds}}
+    {{player.assists}}
+    {{player.steals}}
+    {{player.blocks}}
+  </p>
+</h1> -->
+
+<!-- <div *ngIf="(player$ | async) as player" class="main-div">
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar>
+
+      </div>
+      <mat-card-title>{{player.id}}</mat-card-title>
+      <mat-card-subtitle>{{player.playerName}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+</div> -->
+
+<!-- <h1>
+  <p *ngIf="(playerStat$ | async) as player">
+    {{player.id}}
+  </p>
+</h1> -->
+
+<div class="table-responsive-xl"   style="padding-left: 200px;">
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
+
+    <ng-container matColumnDef="playerId">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Player Name</th>
+      <td mat-cell *matCellDef="let element"> {{playersMap.get(element.playerId)}}</td>
+      <!-- <a mat-cell *matCellDef="let element" routerLink="/players/" + {{playersMap.get(element.playerId)}}>{{playersMap.get(element.playerId)}}</a> -->
+    </ng-container>
+    <ng-container matColumnDef="gamesPlayed">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Games Played</th>
+      <td mat-cell *matCellDef="let element"> {{element.gamesPlayed}}</td>
+    </ng-container>
+    <ng-container matColumnDef="points">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Points</th>
+      <td mat-cell *matCellDef="let element"> {{element.points}}</td>
+    </ng-container>
+    <ng-container matColumnDef="rebounds">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Rebounds</th>
+      <td mat-cell *matCellDef="let element"> {{element.rebounds}}</td>
+    </ng-container>
+    <ng-container matColumnDef="assists">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Assists</th>
+      <td mat-cell *matCellDef="let element"> {{element.assists}}</td>
+    </ng-container>
+    <ng-container matColumnDef="steals">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Steals</th>
+      <td mat-cell *matCellDef="let element"> {{element.steals}}</td>
+    </ng-container>
+    <ng-container matColumnDef="blocks">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Blocks</th>
+      <td mat-cell *matCellDef="let element"> {{element.blocks}}</td>
+    </ng-container>
+    <ng-container matColumnDef="feildGoalsAttempted">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>FGA</th>
+      <td mat-cell *matCellDef="let element"> {{element.feildGoalsAttempted}}</td>
+    </ng-container>
+    <ng-container matColumnDef="feildGoalsMade">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>FGM</th>
+      <td mat-cell *matCellDef="let element"> {{element.feildGoalsMade}}</td>
+    </ng-container>
+    <ng-container matColumnDef="customColumn1">
+      <th mat-header-cell *matHeaderCellDef>FG%</th>
+      <td mat-cell *matCellDef="let element">{{((element.feildGoalsMade / element.feildGoalsAttempted)*100).toFixed(1) + "%"}}</td>
+    </ng-container>
+    <ng-container matColumnDef="threePointersAttempted">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>3PA</th>
+      <td mat-cell *matCellDef="let element"> {{element.threePointersAttempted}}</td>
+    </ng-container>
+    <ng-container matColumnDef="threePointerMade">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>3PM</th>
+      <td mat-cell *matCellDef="let element"> {{element.threePointerMade}}</td>
+    </ng-container>
+    <ng-container matColumnDef="customColumn2">
+      <th mat-header-cell *matHeaderCellDef>3P%</th>
+      <td mat-cell *matCellDef="let element"> {{((element.threePointerMade/element.threePointersAttempted)*100).toFixed(1) + "%"}}</td>
+    </ng-container>
+    <ng-container matColumnDef="freeThrowsAttempted">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>FTA</th>
+      <td mat-cell *matCellDef="let element"> {{element.freeThrowsAttempted}}</td>
+    </ng-container>
+    <ng-container matColumnDef="freeThrowsMade">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>FTM</th>
+      <td mat-cell *matCellDef="let element"> {{element.freeThrowsMade}}</td>
+    </ng-container>
+    <ng-container matColumnDef="customColumn3">
+      <th mat-header-cell *matHeaderCellDef>FT%</th>
+      <td mat-cell *matCellDef="let element"> {{((element.freeThrowsMade/element.freeThrowsAttempted)*100).toFixed(1) + "%"}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+  </table>
+  <mat-paginator #paginator
+              [pageSize]="100"
+              [pageSizeOptions]="[2, 5, 10, 25, 100]"
+              >
+    </mat-paginator>
+
+
+</div>
