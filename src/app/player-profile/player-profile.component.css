@@ -1,0 +1,8 @@
+.total_stats{
+  display: table;
+  width: 50%;
+}
+
+.totals{
+  display: table-cell;
+}

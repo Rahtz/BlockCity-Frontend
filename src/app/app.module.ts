@@ -21,6 +21,8 @@ import { PlayersComponent } from './players/players.component';
 import { PlayerProfileComponent } from './player-profile/player-profile.component';
 import {MatCardModule} from '@angular/material/card';
 import { OrderByPipe } from './orderby.pipe';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RecordsComponent } from './records/records.component'; 
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { OrderByPipe } from './orderby.pipe';
     AverageStatsComponent,
     PlayersComponent,
     PlayerProfileComponent,
-    OrderByPipe
+    OrderByPipe,
+    RecordsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { OrderByPipe } from './orderby.pipe';
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
+    MatTabsModule,
   ],
   providers: [StatApiService],
   bootstrap: [AppComponent]

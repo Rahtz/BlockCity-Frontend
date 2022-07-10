@@ -72,12 +72,13 @@ data-bs-target="#staticBackdrop"
         </tbody>
       </table> -->
 
+
       <div class="table-responsive-xl">
         <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
 
-          <ng-container matColumnDef="playerId" >
+          <ng-container matColumnDef="playerId">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Player Name</th>
-            <td mat-cell *matCellDef="let element" (click)="navigateToProfile(element.playerId)" style="cursor: pointer"> {{playersMap.get(element.playerId)}}</td>
+            <td mat-cell *matCellDef="let element" [routerLink]="'/stat/' + element.playerId" style="cursor: pointer"> {{playersMap.get(element.playerId)}}</td>
           </ng-container>
           <ng-container matColumnDef="teamId">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Team Name</th>
@@ -85,7 +86,7 @@ data-bs-target="#staticBackdrop"
           </ng-container>
           <ng-container matColumnDef="yourDate">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Date</th>
-            <td mat-cell *matCellDef="let element"> {{element.yourDate}}</td>
+            <td mat-cell *matCellDef="let element"> {{element.yourDate | date: 'yyyy-MM-dd'}}</td>
           </ng-container>
           <ng-container matColumnDef="points">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Points</th>

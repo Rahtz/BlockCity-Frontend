@@ -9,12 +9,16 @@ import { Stat } from 'src/app/model/stat.interface';
 })
 export class StatApiService {
 
-  readonly statAPIUrl = "https://localhost:7021/api";
+  readonly statAPIUrl = "http://localhost:8082/api";
 
   constructor(private http:HttpClient) { }
 
   getStatList(): Observable<any[]> {
     return this.http.get<any>(this.statAPIUrl + '/Stats');
+  }
+
+  getPlayerStat(id: number|string){
+    return this.http.get<Stat>(this.statAPIUrl + `/Stats/${id}`);
   }
 
   addStat(data:any){
@@ -76,11 +80,6 @@ export class StatApiService {
     return this.http.get<any>(this.statAPIUrl + '/AverageStats');
   }
 
-  getStockData(): Observable<any[]> {
-    return this.http.get<any>('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=ZQFWBMGJ6L06BAY5');
-  }
-
-
   getPlayers1(id: number){
     return this.http.get(this.statAPIUrl + '/Players/${id}');
   }
@@ -91,11 +90,13 @@ export class StatApiService {
     )
   }
 
-  getPlayerStat(id: number): Observable<Stat> {
-    return this.http.get(this.statAPIUrl + `/Players/` + id).pipe(
-      map((user:Stat) => user)
-    )
-  }
+  // getPlayerStat(id: number): Observable<Stat> {
+  //   return this.http.get(this.statAPIUrl + `/Players/` + id).pipe(
+  //     map((user:Stat) => user)
+  //   )
+  // }
+
+
 
   // getPlayerStat(id: number): Observable<any[]> {
   //   return this.http.get<any>(this.statAPIUrl + '/Players/${id}');

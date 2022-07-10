@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { StatApiService } from 'src/app/stat-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Sort } from '@angular/material/sort';
+import { Stat } from 'src/app/model/stat.interface';
 
 @Component({
   selector: 'app-show-stat',
@@ -13,13 +14,14 @@ import { Sort } from '@angular/material/sort';
   styleUrls: ['./show-stat.component.css']
 })
 export class ShowStatComponent implements OnInit {
+  @Input() itemData: Stat | null = null;
 
   statList$!:Observable<any[]>;
   teamsList$!:Observable<any[]>;
   playersList$!:Observable<any[]>;
-  stockData$!:Observable<any[]>;
   teamsList:any=[];
   playersList:any=[];
+  dataSource!:MatTableDataSource<any>;
 
   //Map to display data associated with foreign keys
   teamsMap:Map<number, string> = new Map()
@@ -31,7 +33,7 @@ export class ShowStatComponent implements OnInit {
   displayedColumns = ['playerId', 'teamId', 'yourDate', 'points', 'rebounds', 'assists', 'steals', 'blocks', 'feildGoalsAttempted', 'feildGoalsMade',
   'customColumn1', 'threePointersAttempted', 'threePointerMade', 'customColumn2', 'freeThrowsAttempted', 'freeThrowsMade', 'customColumn3','customColumn4'];
 
-  dataSource!:MatTableDataSource<any>;
+
 
 
   @ViewChild('paginator') paginator! : MatPaginator;
@@ -46,7 +48,6 @@ export class ShowStatComponent implements OnInit {
   ngOnInit(): void {
     this.statList$ = this.service.getStatList();
     this.teamsList$ = this.service.getTeamsList();
-    this.stockData$ = this.service.getStockData();
     this.refreshTeamMap();
     this.refreshPlayerMap();
 

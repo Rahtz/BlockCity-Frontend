@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { StatApiService } from 'src/app/stat-api.service';
+import { Stat } from '../model/stat.interface';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class TotalStatsComponent implements OnInit {
   playersList$!:Observable<any[]>;
   teamsList:any=[];
   playersList:any=[];
+
 
 
   //Map to display data associated with foreign keys
@@ -41,6 +43,13 @@ export class TotalStatsComponent implements OnInit {
     this.teamsList$ = this.service.getTeamsList();
     this.refreshTeamMap();
     this.refreshPlayerMap();
+
+
+    this.service.getStatList()
+    // .pipe(map(totalStatList$ => totalStatList$.filter(stat => stat.Points > 40)))
+    .subscribe((response) => {
+      console.log(response);
+    });
 
 
 

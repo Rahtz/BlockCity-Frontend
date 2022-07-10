@@ -6,26 +6,16 @@ import { HomeComponent } from './home/home.component';
 import { AverageStatsComponent } from './average-stats/average-stats.component';
 import { PlayersComponent} from './players/players.component';
 import { PlayerProfileComponent } from './player-profile/player-profile.component';
+import { RecordsComponent } from './records/records.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
-  { path: 'stats', component: StatComponent },
+  { path: 'stats', component: StatComponent},
   { path: 'TotalStats', component: TotalStatsComponent },
   { path: 'AverageStats', component: AverageStatsComponent},
-  {
-    path: 'players',
-    children: [
-      {
-        path: '',
-        component: PlayersComponent
-      },
-      {
-        path: ':id',
-        component: PlayerProfileComponent
-      }
-    ]
-    }
+  { path: 'stat/:id', component: PlayerProfileComponent},
+  { path: 'records', component: RecordsComponent},
 ];
 
 @NgModule({

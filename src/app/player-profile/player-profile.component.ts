@@ -1,14 +1,11 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { StatApiService } from '../stat-api.service';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Player } from '../model/player.interface';
 import { Stat } from '../model/stat.interface';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { StatApiService } from '../stat-api.service';
 
 
 
@@ -19,105 +16,118 @@ import { MatSort } from '@angular/material/sort';
 })
 export class PlayerProfileComponent implements OnInit {
 
-  totalStatList$!:Observable<any[]>;
-  statList$!:Observable<any[]>;
-  teamsList$!:Observable<any[]>;
-  playersList$!:Observable<any[]>;
-  playerStatsList$!: Observable<any[]>;
+  stat: Stat | null = null;
+
+  statList: Stat | null = null;
+
+  stats: any=[];
+
   teamsList:any=[];
   playersList:any=[];
 
-  // playerData:any;
+  totalPoints:any = 0;
+  totalRebounds:any = 0;
+  totalAssists:any = 0;
+  totalSteals:any = 0;
+  totalBlocks:any = 0;
 
-  private playerId$: Observable<number> = this.activatedRoute.params.pipe(
-    map((params: Params) => parseInt(params['id']))
-  )
+  averagePoints:any = 0;
+  averageRebounds:any = 0;
+  averageAssists:any = 0;
+  averageSteals:any = 0;
+  averageBlocks:any = 0;
 
-  player$: Observable<Player> = this.playerId$.pipe(
-    switchMap((playerId: number) => this.service.findOne(playerId))
-  )
+  mostPoints: any = 0;
+  mostRebounds: any = 0;
+  mostAssists: any = 0;
+  mostSteals: any = 0;
+  mostBlocks: any = 0;
 
+  //Map to display data associated with foreign keys
   teamsMap:Map<number, string> = new Map()
-
   playersMap:Map<number, string> = new Map()
 
-  displayedColumns = ['playerId', 'gamesPlayed', 'points', 'rebounds', 'assists', 'steals', 'blocks', 'feildGoalsAttempted', 'feildGoalsMade',
-  'customColumn1', 'threePointersAttempted', 'threePointerMade', 'customColumn2', 'freeThrowsAttempted', 'freeThrowsMade', 'customColumn3'];
-
-  dataSource!:MatTableDataSource<any>;
-
-  @ViewChild('paginator') paginator! : MatPaginator;
-  @ViewChild(MatSort) matSort! : MatSort;
-
-  // private playerStatId$: Observable<number> = this.activatedRoute.params.pipe(
-  //   map((params: Params) => parseInt(params['id']))
-  // )
-
-  // playerStat$: Observable<Stat> = this.playerStatId$.pipe(
-  //   switchMap((playerStatId: number) => this.service.getPlayerStat(playerStatId))
-  // )
-
-  playerStats$: Observable<Stat> = this.playerId$.pipe(
-    switchMap((playerId: number) => this.service.getPlayerStat(playerId))
-  )
-
-  constructor(private service:StatApiService, private http: HttpClient, private activatedRoute: ActivatedRoute) {
-
+  constructor(private route: ActivatedRoute, private service:StatApiService, private http: HttpClient) {
   }
 
 
 
   ngOnInit(): void {
-    // this.service.getPlayerStat(1).subscribe((data)=>{
-    //   this.playerData = data;
-    // })
-    this.totalStatList$ = this.service.getTotalStatList();
-    this.statList$ = this.service.getStatList();
-    this.teamsList$ = this.service.getTeamsList();
-    // this.playerStatsList$ = this.service.getPlayerStat(1);
+    this.route.params.subscribe(({id}) => {
+      this.getStat(id);
+    });
+
     this.refreshTeamMap();
     this.refreshPlayerMap();
-
-    // this.service.getTotalStatList().subscribe((response:any) => {
-    //   this.dataSource = new MatTableDataSource(response);
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.matSort;
-    //   console.log('response is ', response);
-    // })
-
-
-    // this.service.getStatList().subscribe((response:any) => {
-    //   this.dataSource = new MatTableDataSource(response);
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.matSort;
-    //   console.log('response is ', response);
-    // })
-
-    this.service.getPlayerStat(1).subscribe((response:any) => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.matSort;
-      console.log('response is ', response);
-    })
   }
 
-  refreshTeamMap(){
-    this.service.getTeamsList().subscribe(data => {
-      this.teamsList = data;
-      for(let i =0; i < data.length; i++){
-        this.teamsMap.set(this.teamsList[i].id, this.teamsList[i].teamName);
+getStat(id: number | string){
+  this.service.getPlayerStat(id).subscribe(statData => {
+    this.stats = statData;
+    this.stat = statData;
+    this.stat = Object.entries(this.stat)[0][1];
+    this.statList = statData;
+    // console.log(Object.entries(this.stat)[0][1]);
+    if(this.statList != null){
+      for(let i = 0; i < this.stats.length; i++){
+        this.totalPoints += this.stats[i].points;
+        this.totalRebounds += this.stats[i].rebounds;
+        this.totalAssists += this.stats[i].assists;
+        this.totalSteals += this.stats[i].steals;
+        this.totalBlocks += this.stats[i].blocks;
+
+        if(this.mostPoints < this.stats[i].points){
+          this.mostPoints = this.stats[i].points;
+        }
+        if(this.mostRebounds < this.stats[i].rebounds){
+          this.mostRebounds = this.stats[i].rebounds;
+        }
+        if(this.mostAssists < this.stats[i].assists){
+          this.mostAssists = this.stats[i].assists;
+        }
+        if(this.mostSteals < this.stats[i].steals){
+          this.mostSteals = this.stats[i].steals;
+        }
+        if(this.mostBlocks < this.stats[i].blocks){
+          this.mostBlocks = this.stats[i].blocks;
+        }
+
       }
-    })
-  }
+    }
+    else{
+      this.totalPoints = 69;
+      this.totalRebounds = 69;
+      this.totalAssists = 69;
+      this.totalSteals = 69;
+      this.totalBlocks = 69;
+    }
 
-  refreshPlayerMap(){
-    this.service.getPlayersList().subscribe(data => {
-      this.playersList = data;
-      for(let i = 0; i < data.length; i++){
-        this.playersMap.set(this.playersList[i].id, this.playersList[i].playerName);
-      }
-    })
-  }
+    this.averagePoints += this.totalPoints/this.stats.length;
+    this.averageRebounds += this.totalRebounds/this.stats.length;
+    this.averageAssists += this.totalAssists/this.stats.length;
+    this.averageSteals += this.totalSteals/this.stats.length;
+    this.averageBlocks += this.totalBlocks/this.stats.length;
+  });
+
+}
+
+refreshTeamMap(){
+  this.service.getTeamsList().subscribe(data => {
+    this.teamsList = data;
+    for(let i =0; i < data.length; i++){
+      this.teamsMap.set(this.teamsList[i].id, this.teamsList[i].teamName);
+    }
+  })
+}
+
+refreshPlayerMap(){
+  this.service.getPlayersList().subscribe(data => {
+    this.playersList = data;
+    for(let i = 0; i < data.length; i++){
+      this.playersMap.set(this.playersList[i].id, this.playersList[i].playerName);
+    }
+  })
+}
 
 
 }
