@@ -9,10 +9,6 @@ import { Stat } from 'src/app/model/stat.interface';
 })
 export class StatApiService {
 
-<<<<<<< HEAD
-  // readonly statAPIUrl = "https://localhost:7021/api";
-=======
->>>>>>> d1ea6ad7601f8ef173ddb92e078b48063b5882e7
   readonly statAPIUrl = "https://blockcity.herokuapp.com/api";
 
   constructor(private http:HttpClient) { }
