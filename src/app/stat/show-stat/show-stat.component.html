@@ -1,4 +1,4 @@
-<div class="table-responsive-xl"  style="padding-left: 200px;">
+<div class="table-responsive-xl" id="maindiv">
 
 
 <!-- Add Stat trigger modal -->
@@ -76,75 +76,75 @@ data-bs-target="#staticBackdrop"
       <div class="table-responsive-xl">
         <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
 
-          <ng-container matColumnDef="playerId">
+          <ng-container matColumnDef="playerId" id="playerid">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Player Name</th>
             <td mat-cell *matCellDef="let element" [routerLink]="'/stat/' + element.playerId" style="cursor: pointer"> {{playersMap.get(element.playerId)}}</td>
           </ng-container>
-          <ng-container matColumnDef="teamId">
+          <ng-container matColumnDef="teamId" id="teamid">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Team Name</th>
             <td mat-cell *matCellDef="let element"> {{teamsMap.get(element.teamId)}}</td>
           </ng-container>
-          <ng-container matColumnDef="yourDate">
+          <ng-container matColumnDef="yourDate" id="date">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Date</th>
             <td mat-cell *matCellDef="let element"> {{element.yourDate | date: 'yyyy-MM-dd'}}</td>
           </ng-container>
-          <ng-container matColumnDef="points">
+          <ng-container matColumnDef="points" id="points">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Points</th>
             <td mat-cell *matCellDef="let element"> {{element.points}}</td>
           </ng-container>
-          <ng-container matColumnDef="rebounds">
+          <ng-container matColumnDef="rebounds" id="rebounds">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Rebounds</th>
             <td mat-cell *matCellDef="let element"> {{element.rebounds}}</td>
           </ng-container>
-          <ng-container matColumnDef="assists">
+          <ng-container matColumnDef="assists" id="assists">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Assists</th>
             <td mat-cell *matCellDef="let element"> {{element.assists}}</td>
           </ng-container>
-          <ng-container matColumnDef="steals">
+          <ng-container matColumnDef="steals" id="steals">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Steals</th>
             <td mat-cell *matCellDef="let element"> {{element.steals}}</td>
           </ng-container>
-          <ng-container matColumnDef="blocks">
+          <ng-container matColumnDef="blocks" id="blocks">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Blocks</th>
             <td mat-cell *matCellDef="let element"> {{element.blocks}}</td>
           </ng-container>
-          <ng-container matColumnDef="feildGoalsAttempted">
+          <ng-container matColumnDef="feildGoalsAttempted" id="feildGoalsAttempted">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>FGA</th>
             <td mat-cell *matCellDef="let element"> {{element.feildGoalsAttempted}}</td>
           </ng-container>
-          <ng-container matColumnDef="feildGoalsMade">
+          <ng-container matColumnDef="feildGoalsMade" id="feildGoalsMade">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>FGM</th>
             <td mat-cell *matCellDef="let element"> {{element.feildGoalsMade}}</td>
           </ng-container>
-          <ng-container matColumnDef="customColumn1">
+          <ng-container matColumnDef="customColumn1" id="customColumn1">
             <th mat-header-cell *matHeaderCellDef>FG%</th>
             <td mat-cell *matCellDef="let element">{{((element.feildGoalsMade / element.feildGoalsAttempted)*100).toFixed(1) + "%"}}</td>
           </ng-container>
-          <ng-container matColumnDef="threePointersAttempted">
+          <ng-container matColumnDef="threePointersAttempted" id="threePointersAttempted">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>3PA</th>
             <td mat-cell *matCellDef="let element"> {{element.threePointersAttempted}}</td>
           </ng-container>
-          <ng-container matColumnDef="threePointerMade">
+          <ng-container matColumnDef="threePointerMade" id="threePointerMade">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>3PM</th>
             <td mat-cell *matCellDef="let element"> {{element.threePointerMade}}</td>
           </ng-container>
-          <ng-container matColumnDef="customColumn2">
+          <ng-container matColumnDef="customColumn2" id="customColumn2">
             <th mat-header-cell *matHeaderCellDef>3P%</th>
             <td mat-cell *matCellDef="let element"> {{((element.threePointerMade/element.threePointersAttempted)*100).toFixed(1) + "%"}}</td>
           </ng-container>
-          <ng-container matColumnDef="freeThrowsAttempted">
+          <ng-container matColumnDef="freeThrowsAttempted" id="freeThrowsAttempted">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>FTA</th>
             <td mat-cell *matCellDef="let element"> {{element.freeThrowsAttempted}}</td>
           </ng-container>
-          <ng-container matColumnDef="freeThrowsMade">
+          <ng-container matColumnDef="freeThrowsMade" id="freeThrowsMade">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>FTM</th>
             <td mat-cell *matCellDef="let element"> {{element.freeThrowsMade}}</td>
           </ng-container>
-          <ng-container matColumnDef="customColumn3">
+          <ng-container matColumnDef="customColumn3" id="customColumn3">
             <th mat-header-cell *matHeaderCellDef>FT%</th>
             <td mat-cell *matCellDef="let element"> {{((element.freeThrowsMade/element.freeThrowsAttempted)*100).toFixed(1) + "%"}}</td>
           </ng-container>
-          <ng-container matColumnDef="customColumn4">
+          <ng-container matColumnDef="customColumn4" id="customColumn4">
             <th mat-header-cell *matHeaderCellDef>Options</th>
             <td mat-cell *matCellDef="let element"> <button class="btn btn-outline-primary me-2 mb-1"
               (click)="modalEdit(element)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"

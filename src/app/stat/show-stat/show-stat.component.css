@@ -26,3 +26,20 @@
 table {
   width: 100%;
 }
+
+#maindiv{
+  padding-left: 200px;
+}
+
+
+@media screen and (max-width: 700px) {
+
+  #maindiv{
+    padding-left: 0px;
+  }
+
+  mat-header-row, mat-cell{
+    width: 200% !important;
+  }
+
+}
