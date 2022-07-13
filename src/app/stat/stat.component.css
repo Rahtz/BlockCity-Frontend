@@ -54,3 +54,10 @@ div.content {
     float: none;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .sidebar{
+    padding-top: 55px;
+  }
+
+}
