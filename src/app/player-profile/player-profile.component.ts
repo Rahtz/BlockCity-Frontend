@@ -22,6 +22,8 @@ export class PlayerProfileComponent implements OnInit {
 
   stats: any=[];
 
+  totalStats: any=[];
+
   teamsList:any=[];
   playersList:any=[];
 
