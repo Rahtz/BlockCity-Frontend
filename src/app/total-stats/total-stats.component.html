@@ -1,53 +1,4 @@
-<!-- <div class="table-responsive-xl">
-
-
-
-  <table class="table table-hover">
-    <thead>
-      <th>Player Name</th>
-      <th>Games Played</th>
-      <th>Points</th>
-      <th>Rebounds</th>
-      <th>Assists</th>
-      <th>Steals</th>
-      <th>Blocks</th>
-      <th>FGA</th>
-      <th>FGM</th>
-      <th>FG%</th>
-      <th>3PA</th>
-      <th>3PM</th>
-      <th>3P%</th>
-      <th>FTA</th>
-      <th>FTM</th>
-      <th>FT%</th>
-    </thead>
-          <tbody>
-            <tr *ngFor="let item of totalStatList$|async">
-              <td>{{playersMap.get(item.playerId)}}</td>
-              <td>{{item.gamesPlayed}}</td>
-              <td>{{item.points}}</td>
-              <td>{{item.rebounds}}</td>
-              <td>{{item.assists}}</td>
-              <td>{{item.steals}}</td>
-              <td>{{item.blocks}}</td>
-              <td>{{item.feildGoalsAttempted}}</td>
-              <td>{{item.feildGoalsMade}}</td>
-              <td>{{((item.feildGoalsMade / item.feildGoalsAttempted)*100).toFixed(1) + "%"}}</td>
-              <td>{{item.threePointersAttempted}}</td>
-              <td>{{item.threePointerMade}}</td>
-              <td>{{((item.threePointerMade/item.threePointersAttempted)*100).toFixed(1) + "%"}}</td>
-              <td>{{item.freeThrowsAttempted}}</td>
-              <td>{{item.freeThrowsMade}}</td>
-              <td>{{((item.freeThrowsMade/item.freeThrowsAttempted)*100).toFixed(1) + "%"}}</td>
-            </tr>
-          </tbody>
-        </table>
-
-
-
-
-
-  </div> -->
+<div id="maindiv">
 
   <div class="sidebar">
     <a class="nav-link" routerLink = "/stats" routerLinkActive="active">Stats</a>
@@ -56,12 +7,12 @@
     <a class="nav-link" routerLink = "/records" routerLinkActive="active">Records</a>
   </div>
 
-<div class="table-responsive-xl"   style="padding-left: 200px;">
+<div class="table-responsive-xl" id="div">
   <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" >
 
-    <ng-container matColumnDef="playerId">
+    <ng-container matColumnDef="playerId" sticky>
       <th mat-header-cell mat-sort-header *matHeaderCellDef>Player Name</th>
-      <td mat-cell *matCellDef="let element"> {{playersMap.get(element.playerId)}}</td>
+      <td mat-cell *matCellDef="let element"[routerLink]="'/stat/' + element.playerId" style="cursor: pointer"> {{playersMap.get(element.playerId)}}</td>
       <!-- <a mat-cell *matCellDef="let element" routerLink="/players/" + {{playersMap.get(element.playerId)}}>{{playersMap.get(element.playerId)}}</a> -->
     </ng-container>
     <ng-container matColumnDef="gamesPlayed">
@@ -125,7 +76,7 @@
       <td mat-cell *matCellDef="let element"> {{((element.freeThrowsMade/element.freeThrowsAttempted)*100).toFixed(1) + "%"}}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 
@@ -137,4 +88,5 @@
     </mat-paginator>
 
 
+</div>
 </div>

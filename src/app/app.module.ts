@@ -22,7 +22,8 @@ import { PlayerProfileComponent } from './player-profile/player-profile.componen
 import {MatCardModule} from '@angular/material/card';
 import { OrderByPipe } from './orderby.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RecordsComponent } from './records/records.component'; 
+import { RecordsComponent } from './records/records.component';
+import { AdminComponent } from './admin/admin.component'; 
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RecordsComponent } from './records/records.component';
     PlayersComponent,
     PlayerProfileComponent,
     OrderByPipe,
-    RecordsComponent
+    RecordsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

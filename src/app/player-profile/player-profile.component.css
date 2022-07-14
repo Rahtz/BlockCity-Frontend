@@ -5,4 +5,23 @@
 
 .totals{
   display: table-cell;
+  padding-left: 20px;
+}
+
+button{
+  float: left;
+}
+
+
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .div1{
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 900px) and (orientation: portrait) {
+  .div1{
+    padding-top: 60px;
+  }
 }

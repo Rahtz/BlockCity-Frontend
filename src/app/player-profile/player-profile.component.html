@@ -1,4 +1,8 @@
-<ng-container *ngIf="stat">
+<div class="div1">
+
+  <button type="button" class="btn btn-secondary" routerLink = "/stats" routerLinkActive="active">Back</button>
+
+<ng-container *ngIf="stat" id="name">
   <h1>Player: {{playersMap.get(stat.playerId)}}</h1>
 </ng-container>
 
@@ -219,6 +223,55 @@
       </tbody>
     </table>
   </mat-tab>
+  <mat-tab label="2018">
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Season</th>
+          <th>points</th>
+          <th>Rebounds</th>
+          <th>Assists</th>
+          <th>Steals</th>
+          <th>Blocks</th>
+          <th>FGA</th>
+          <th>FGM</th>
+          <th>FG%</th>
+          <th>3PA</th>
+          <th>3PM</th>
+          <th>3P%</th>
+          <th>FTA</th>
+          <th>FTM</th>
+          <th>FT%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let stat of stats">
+        <tr *ngIf="(stat.yourDate | date: 'yyyy') == ('2018')">
+          <td>{{teamsMap.get(stat.teamId)}}</td>
+          <td>{{stat.yourDate | date: 'yyyy'}}</td>
+          <td>{{stat.points}}</td>
+          <td>{{stat.rebounds}}</td>
+          <td>{{stat.assists}}</td>
+          <td>{{stat.steals}}</td>
+          <td>{{stat.blocks}}</td>
+          <td>{{stat.feildGoalsAttempted}}</td>
+          <td>{{stat.feildGoalsMade}}</td>
+          <td>{{((stat.feildGoalsMade / stat.feildGoalsAttempted)*100).toFixed(1) + "%"}}</td>
+          <td>{{stat.threePointersAttempted}}</td>
+          <td>{{stat.threePointerMade}}</td>
+          <td>{{((stat.threePointerMade/stat.threePointersAttempted)*100).toFixed(1) + "%"}}</td>
+          <td>{{stat.freeThrowsAttempted}}</td>
+          <td>{{stat.freeThrowsMade}}</td>
+          <td>{{((stat.freeThrowsMade/stat.freeThrowsAttempted)*100).toFixed(1) + "%"}}</td>
+        </tr>
+      </ng-container>
+      <tr>
+        <td>1</td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-tab>
 </mat-tab-group>
 
 
@@ -228,3 +281,4 @@
 </pre> -->
 
 
+</div>
