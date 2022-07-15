@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'stat/:id', component: PlayerProfileComponent},
   { path: 'records', component: RecordsComponent},
   { path: 'admin', component: AdminComponent},
+  { path: 'players', component: PlayersComponent},
 ];
 
 @NgModule({

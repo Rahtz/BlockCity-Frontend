@@ -37,11 +37,11 @@ div.content {
   height: 1000px;
 }
 
-table{
+table {
   width: 100%;
 }
 
-#div{
+#div {
   padding-left: 200px;
 }
 
@@ -52,8 +52,12 @@ table{
     height: auto;
     position: relative;
   }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
 }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
@@ -65,249 +69,236 @@ table{
 }
 
 @media screen and (max-width: 900px) {
-  .sidebar{
+  .sidebar {
     padding-top: 55px;
   }
-
 }
-
 
 @media screen and (max-width: 700px) {
-
-  #maindiv{
+  #maindiv {
     padding-left: 0px;
   }
-
-
 }
 @media screen and (max-width: 900px) and (orientation: landscape) {
-
-  #div{
+  #div {
     padding-top: 50px;
   }
 
   .mat-table__wrapper .mat-table {
     min-width: auto !important;
     width: 100% !important;
+  }
 
-}
-
-.mat-header-row {
+  .mat-header-row {
     width: 100%;
-}
+  }
 
-.mat-row {
+  .mat-row {
     width: 100%;
-}
+  }
 
-.mat-column-playerId{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-playerId {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-teamId{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-teamId {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-yourDate{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-yourDate {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-points{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-points {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-rebounds{
-  flex: 0 0 25% !important;
-  max-width: 60px !important;
-}
+  .mat-column-rebounds {
+    flex: 0 0 25% !important;
+    max-width: 60px !important;
+  }
 
-.mat-column-assists{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-assists {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-steals{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-steals {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-blocks{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-blocks {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-feildGoalsAttempted{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-feildGoalsAttempted {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-feildGoalsMade{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-feildGoalsMade {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn1{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-customColumn1 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-threePointersAttempted{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-threePointersAttempted {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-threePointerMade{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-threePointerMade {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn2{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-customColumn2 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-freeThrowsAttempted{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-freeThrowsAttempted {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-freeThrowsMade{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-freeThrowsMade {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn3{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-customColumn3 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn4{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
-
-
-
+  .mat-column-customColumn4 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 }
 
 @media screen and (max-width: 900px) and (orientation: portrait) {
-
-  #maindiv{
+  #maindiv {
     padding-top: 0px;
   }
 
-  #div{
+  #div {
     padding-left: 0;
   }
 
   .mat-table__wrapper .mat-table {
     min-width: auto !important;
     width: 100% !important;
-}
+  }
 
-.mat-header-row {
+  .mat-header-row {
     width: 100%;
-}
+  }
 
-.mat-row {
+  .mat-row {
     width: 100%;
-}
+  }
 
-.mat-column-playerId{
-  flex: 0 0 25% !important;
-  max-width: 100px !important;
-}
+  .mat-column-playerId {
+    flex: 0 0 25% !important;
+    max-width: 100px !important;
+  }
 
-.mat-column-teamId{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-  display: none;
-}
+  .mat-column-teamId {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+    display: none;
+  }
 
-.mat-column-yourDate{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-  display: none;
-}
+  .mat-column-yourDate {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+    display: none;
+  }
 
-.mat-column-points{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-points {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-rebounds{
-  flex: 0 0 25% !important;
-  max-width: 60px !important;
-}
+  .mat-column-rebounds {
+    flex: 0 0 25% !important;
+    max-width: 60px !important;
+  }
 
-.mat-column-assists{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-assists {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-steals{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-steals {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-blocks{
-  flex: 0 0 25% !important;
-  max-width: 50px !important;
-}
+  .mat-column-blocks {
+    flex: 0 0 25% !important;
+    max-width: 50px !important;
+  }
 
-.mat-column-feildGoalsAttempted{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-feildGoalsAttempted {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-feildGoalsMade{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-feildGoalsMade {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn1{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-customColumn1 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-threePointersAttempted{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-threePointersAttempted {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-threePointerMade{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-threePointerMade {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn2{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-customColumn2 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-freeThrowsAttempted{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-freeThrowsAttempted {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-freeThrowsMade{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-freeThrowsMade {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn3{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
+  .mat-column-customColumn3 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 
-.mat-column-customColumn4{
-  flex: 0 0 25% !important;
-  max-width: 80px !important;
-}
-
-
+  .mat-column-customColumn4 {
+    flex: 0 0 25% !important;
+    max-width: 80px !important;
+  }
 }

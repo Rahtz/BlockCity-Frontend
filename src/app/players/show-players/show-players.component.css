@@ -1,0 +1,45 @@
+#add-success-alert,
+#update-success-alert,
+#delete-success-alert{
+  display: none;
+}
+
+#add-success-alert,
+#update-success-alert,
+#delete-success-alert{
+  animation-name: fadeInAndOut;
+  animation-duration: 4s;
+}
+
+@-webkit-keyframes fadeInAndOut {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeInAndOut {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+table {
+  width: 100%;
+}
+
+#maindiv{
+  padding-left: 200px;
+  padding-top: 50px;
+}
+
+
+@media screen and (max-width: 700px) {
+
+  #maindiv{
+    padding-left: 0px;
+  }
+
+
+}
+
+

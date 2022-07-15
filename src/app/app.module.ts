@@ -23,7 +23,9 @@ import {MatCardModule} from '@angular/material/card';
 import { OrderByPipe } from './orderby.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RecordsComponent } from './records/records.component';
-import { AdminComponent } from './admin/admin.component'; 
+import { AdminComponent } from './admin/admin.component';
+import { ShowPlayersComponent } from './players/show-players/show-players.component';
+import { AddEditPlayerComponent } from './players/add-edit-player/add-edit-player.component'; 
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { AdminComponent } from './admin/admin.component';
     PlayerProfileComponent,
     OrderByPipe,
     RecordsComponent,
-    AdminComponent
+    AdminComponent,
+    ShowPlayersComponent,
+    AddEditPlayerComponent
   ],
   imports: [
     BrowserModule,

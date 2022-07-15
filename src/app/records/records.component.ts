@@ -20,12 +20,14 @@ export class RecordsComponent implements OnInit {
   recordAssists: any = 0;
   recordSteals: any = 0;
   recordBlocks: any = 0;
+  record3pm: any = 0;
 
   pointsPerson: any = '';
   reboundsPerson: any = '';
   assistsPerson: any = '';
   stealsPerson: any = '';
   blocksPerson: any = '';
+  tpmPerson: any = '';
 
   //Map to display data associated with foreign keys
   teamsMap:Map<number, string> = new Map()
@@ -65,6 +67,10 @@ getStat(){
         if(this.recordBlocks < this.stats[i].blocks){
           this.recordBlocks = this.stats[i].blocks;
           this.blocksPerson = this.stats[i].playerId;
+        }
+        if(this.record3pm < this.stats[i].threePointerMade){
+          this.record3pm = this.stats[i].threePointerMade;
+          this.tpmPerson = this.stats[i].playerId;
         }
       }
     }

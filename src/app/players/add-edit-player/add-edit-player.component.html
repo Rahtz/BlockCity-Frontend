@@ -1,0 +1,13 @@
+<form>
+  <div class="mb-3">
+    <label for="playerName" class="form-label">Player Name</label>
+    <input type="text" class="form-control" [(ngModel)]="playerName" name="playerName">
+  </div>
+
+  <button (click)="addPlayer(); reloadCurrentPage()" *ngIf="player.id==0" class="btn btn-primary">
+    Add
+  </button>
+  <button (click)="updatePlayer(); reloadCurrentPage()" *ngIf="player.id!=0" class="btn btn-primary">
+    Update
+  </button>
+</form>
